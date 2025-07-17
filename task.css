@@ -87,7 +87,7 @@ span {
 
 #my-lists {
   color: #807f85;
-  font-weight: 600;
+  font-weight: 600; 
 }
 
 .main-header {
@@ -100,7 +100,7 @@ span {
 }
 
 .greeting {
-  font-size: 22.24px;
+  font-size: 22.24px; 
   font-weight: bold;
   color: rgb(0, 0, 0);
   padding-top: 12px;
