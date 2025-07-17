@@ -1,0 +1,193 @@
+body {
+    display: flex;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+aside {
+    padding: 10px 20px;
+    width: 272px;
+    height: 100vh;
+    background-color: #fafbfc;
+    border-right: 2px solid #E0E0E0;
+    position: relative;
+}
+
+.nav-divider {
+    width: 100%;
+    margin: 12px auto;
+    border-bottom: 2px solid #E0E0E0;
+}
+
+.main-navigation-list > li {
+    list-style-type: none;
+    padding: 9px 0px;
+    color: #89888C;
+    font-size: 19px;
+}
+
+.main-navigation-list a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.main-logo {
+    width: 33px;
+    height: 26px;
+    margin: 10px 10px;
+}
+
+.main-navigation-logo {
+    width: 20px;
+    height: 22px;
+    margin: 0px 10px;
+}
+
+.sidebar-settings {
+    position: absolute;
+    left: 60px;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #89888C;
+    font-size: 17px;
+}
+
+.sidebar-settings a {
+    text-decoration: none;
+    color: inherit;
+    padding-left: 5px;
+}
+.settings-navigation-list {
+    width: 17px;
+    height: 17px;
+    margin: 0px;
+}
+
+span {
+    font-weight: bold;
+}
+
+#my-lists {
+    color: #807F85;
+    font-weight: semibold;
+}
+
+.main-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 10px;
+    box-sizing: border-box;
+    background-color: #765bff;
+    height: 60px;
+}
+
+.main-header-right {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-right: 20px;
+}
+
+.greeting {
+    font-size: 1.39rem;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    background: #e4E3e9;
+    border-radius: 12px;
+    padding: 0 8px;
+    width: 280.55px;
+    height: 40px;
+    position: relative;
+    margin-top: 10px;
+}
+
+.search-bar {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 1rem;
+    padding: 10px 8px 10px 10px;
+    flex: 1;
+}
+
+.search-icon {
+    width: 14px;
+    height: 15.56px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.voice-icon {
+    width: 10.69px;
+    height: 16px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.user-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+.main-footer {
+    position: fixed;
+    left: 250px;
+    bottom: 0;
+    width: 80.5%;
+    height: 60px;
+    background: #fff;
+    display: flex;
+    align-items: right;
+    justify-content: space-between;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-logo {
+    width: 20px;
+    height: 20px;
+}
+
+.footer-task-btn {
+    padding: 8px 0;
+    background: none;
+    border: none;
+    color: #2196f3;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+}
+
+.add-task-btn {
+    background: none;
+    border: none;
+    color: #2196f3;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+
+
+
