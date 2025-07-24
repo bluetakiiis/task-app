@@ -1,26 +1,210 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 272px 1fr;
-  grid-template-rows: 60px 1fr 60px;
-  grid-template-areas:
-    "sidebar header"
-    "sidebar main"
-    "sidebar footer";
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-aside {
+body,
+.login-page {
+  height: 100vh;
+}
+
+body {
+  display: grid;
+  grid-template:
+    "sidebar header" 60px
+    "sidebar main" 1fr
+    "sidebar footer" 60px / 272px 1fr;
+}
+
+.login-page,
+.user-popup-overlay,
+#deletePopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.login-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.login-container {
+  background-color: #ffffff;
+  width: 1280px;
+  height: 551px;
+  position: relative;
+}
+
+.login-image,
+.login-logo-image,
+.popup-avatar {
+  object-fit: cover;
+}
+
+.login-image {
+  position: absolute;
+  width: 639px;
+  height: 591px;
+}
+
+.login-logo-container,
+.login-logo-image {
+  width: 88px;
+  height: 70px;
+  margin-top: 10px;
+}
+
+.login-logo-container {
+  position: absolute;
+  top: 99px;
+  left: 765px;
+}
+
+.remember-checkbox-container,
+.remember-label,
+.login-button-container,
+.search-icon,
+.voice-icon,
+.user-avatar,
+.new-task-button,
+.add-task-button,
+.popup-close-button,
+.action-button {
+  cursor: pointer;
+}
+
+.remember-checkbox-container {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  top: 342px;
+  left: 776px;
+}
+
+.remember-checkbox-indicator {
+  height: 17px;
+  background-color: #ffffff;
+  border-radius: 8.5px;
+  border: 1px solid #807f85;
+}
+
+.remember-label {
+  position: absolute;
+  width: 127px;
+  height: 15px;
+  top: 343px;
+  left: 801px;
+  font: 500 14px/1;
+  color: #000000;
+}
+
+.login-button-container {
+  display: flex;
+  width: 111px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: absolute;
+  top: 427px;
+  left: 911px;
+  background-color: #0481fe;
+  border-radius: 80px;
+  overflow: hidden;
+}
+
+.login-button-text {
+  position: relative;
+  width: fit-content;
+  font: 500 17px/1;
+  color: #ffffff;
+  text-align: center;
+}
+
+.username-input-container {
+  position: absolute;
+  width: 395px;
+  height: 57px;
+  top: 266px;
+  left: 766px;
+}
+
+.input-field-container {
+  position: relative;
+  width: 393px;
+  height: 57px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #a09fa4;
+}
+
+.username-input-field,
+.search-field {
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.username-input-field {
+  position: absolute;
+  width: 360px;
+  height: 40px;
+  top: 8px;
+  left: 12px;
+  font: 500 15px/1;
+  color: #000000;
+  padding: 0 10px;
+}
+
+.app-title {
+  position: absolute;
+  width: 248px;
+  height: 66px;
+  top: 100px;
+  left: 872px;
+  font-size: 65px;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+  z-index: 2;
+}
+
+.input-label {
+  position: absolute;
+  width: 74px;
+  height: 11px;
+  top: 238px;
+  left: 764px;
+  font: 500 15px/1;
+  color: #000000;
+}
+
+#rememberCheckbox {
+  display: none;
+}
+
+#rememberCheckbox:checked
+  + .remember-checkbox-container
+  .remember-checkbox-indicator {
+  background-color: #0481fe;
+  border-color: #0481fe;
+}
+
+.app-sidebar,
+.app-header,
+.app-content,
+.app-footer {
+  display: none;
+}
+
+.app-sidebar {
   grid-area: sidebar;
   padding: 10px 20px;
   border-right: 2px solid #e0e0e0;
@@ -34,31 +218,32 @@ aside {
   border-bottom: 2px solid #e0e0e0;
 }
 
-.main-navigation-list > li {
+.navigation-list > li {
   list-style-type: none;
-  padding: 9px 0px;
+  padding: 9px 0;
   color: #89888c;
   font-size: 19px;
 }
 
-.main-navigation-list a {
+.navigation-list a,
+.settings-container a {
   color: inherit;
   text-decoration: none;
 }
 
-.main-logo {
+.app-logo {
   width: 33px;
   height: 26px;
-  margin: 10px 10px;
+  margin: 10px;
 }
 
-.main-navigation-logo {
+.nav-icon {
   width: 20px;
   height: 22px;
-  margin: 0px 10px;
+  margin: 0 10px;
 }
 
-.sidebar-settings {
+.settings-container {
   position: absolute;
   left: 60px;
   bottom: 20px;
@@ -69,16 +254,9 @@ aside {
   font-size: 17px;
 }
 
-.sidebar-settings a {
-  text-decoration: none;
-  color: inherit;
-  padding-left: 5px;
-}
-
-.settings-navigation-list {
+.settings-icon {
   width: 17px;
   height: 17px;
-  margin: 0px;
 }
 
 span {
@@ -90,23 +268,22 @@ span {
   font-weight: 600;
 }
 
-.main-header {
+.app-header {
   grid-area: header;
-  display: grid;
-  grid-template-columns: 1fr auto;
   padding: 0 20px;
+  grid-template-columns: 1fr auto;
   align-items: flex-start;
 }
 
-.greeting {
-  font-size: 22.24px;
+.user-greeting {
+  font-size: 23px;
   font-weight: bold;
-  color: rgb(0, 0, 0);
+  color: #000000;
   padding-top: 12px;
   margin: 0;
 }
 
-.main-header-right {
+.header-right {
   display: grid;
   grid-template-columns: auto 40px;
   gap: 20px;
@@ -114,7 +291,7 @@ span {
   padding-top: 22px;
 }
 
-.search-bar-container {
+.search-container {
   display: grid;
   grid-template-columns: 14px 1fr 10.69px;
   align-items: center;
@@ -125,46 +302,38 @@ span {
   height: 35px;
 }
 
-.search-bar {
-  border: none;
-  background: transparent;
-  outline: none;
+.search-field {
   font-size: 16px;
 }
 
 .search-icon {
   width: 14px;
   height: 15.56px;
-  cursor: pointer;
 }
 
 .voice-icon {
   width: 10.69px;
   height: 16px;
-  cursor: pointer;
 }
 
-.user-logo {
+.user-avatar {
   width: 35px;
   height: 35px;
-  cursor: pointer;
 }
 
-.main-content {
+.app-content {
   grid-area: main;
   overflow-y: auto;
-  display: grid;
   place-items: center;
   font-size: 48px;
   color: #333;
   margin: 20px 50px 0 60px;
 }
 
-.main-footer {
+.app-footer {
   grid-area: footer;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   padding: 0 20px;
+  grid-template-columns: 1fr 1fr;
 }
 
 .footer-left {
@@ -174,18 +343,20 @@ span {
   gap: 8px;
 }
 
-.footer-logo {
+.task-icon {
   width: 20px;
   height: 20px;
 }
 
-.footer-task-btn {
+.new-task-button,
+.add-task-button {
   background: none;
   border: none;
   color: #0481fe;
-  font-size: 17.6px;
-  font-weight: 500;
-  cursor: pointer;
+  font: 500 17.6px/1;
+}
+
+.new-task-button {
   text-align: left;
   padding: 8px 0;
 }
@@ -196,30 +367,25 @@ span {
   align-items: center;
 }
 
-.add-task-btn {
-  background: none;
-  border: none;
-  color: #0481fe;
-  font-size: 17.6px;
-  font-weight: 500;
-  cursor: pointer;
+.add-task-button {
   border-radius: 8px;
 }
 
-.popup-overlay {
+.user-popup-overlay,
+#deletePopup {
   display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
+  height: 100%;
 }
 
-.popup-content {
+#deletePopup {
+  z-index: 1100;
+}
+
+.popup-content-container {
   background-color: #ffffff;
   border-radius: 12px;
   width: 579px;
@@ -229,48 +395,42 @@ span {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.close-button {
+.popup-close-button {
   position: absolute;
   top: 15px;
   right: 15px;
   background: none;
   border: none;
   font-size: 24px;
-  cursor: pointer;
   color: #666;
 }
 
-
-.user-logo-container {
+.popup-avatar-container {
   width: 100px;
   height: 100px;
   margin: 0 auto 20px;
-  border-radius: 50%;
   overflow: hidden;
-  background-color: #e4e3e9;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.user-avatar {
+.popup-avatar {
   width: 100px;
   height: 100px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
-.user-name {
+.popup-username {
   margin-bottom: 20px;
-  font-weight: 600;
-  font-size: 23px;
+  font: 600 23px/1;
   color: #000000;
   text-align: center;
 }
 
 .task-status {
   margin-bottom: 10px;
-  font-weight: 500;
-  font-size: 18px;
+  font: 500 18px/1;
   color: #000000;
   text-align: center;
 }
@@ -286,18 +446,37 @@ span {
   width: 120px;
   height: 40px;
   border: none;
-  border-radius: 80px;
-  font-weight: 500;
-  font-size: 17px;
+  font: 500 17px/1;
   color: #ffffff;
-  cursor: pointer;
+  border-radius: 80px;
 }
 
-.action-button.logout {
+.logout-button {
   background-color: #0481fe;
 }
 
-.action-button.delete {
+.delete-button {
   background-color: #fe0408;
 }
 
+.delete-title {
+  color: #fe0408;
+}
+
+.delete-message {
+  font-size: 18px;
+  color: #000;
+}
+
+.delete-confirm-btn {
+  margin-top: 30px;
+  background: #fe0408;
+  color: #fff;
+}
+
+.delete-cancel-btn {
+  margin-top: 30px;
+  background: #fff;
+  color: #fe0408;
+  border: 1px solid #fe0408;
+}

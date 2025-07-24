@@ -4,40 +4,73 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TaskFlow App</title>
+    <link rel="stylesheet" href="task.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="task.css" />
   </head>
   <body>
-    <aside>
+    <!-- Login Page -->
+    <div class="login-page" id="loginPage">
+      <div class="login-container">
+        <img class="login-image" src="login.jpg" />
+        <div class="login-logo-container">
+          <img class="login-logo-image" src="Main Logo.png" />
+        </div>
+
+        <!-- Remember me checkbox -->
+        <input type="checkbox" id="rememberCheckbox" />
+        <div class="remember-checkbox-container">
+          <div class="remember-checkbox-indicator"></div>
+        </div>
+        <div class="remember-label">Remember me</div>
+
+        <!-- Login button -->
+        <div class="login-button-container" id="loginButton">
+          <div class="login-button-text">Get Started</div>
+        </div>
+
+        <!-- Username input -->
+        <div class="username-input-container">
+          <div class="input-field-container">
+            <input
+              type="text"
+              id="usernameInput"
+              class="username-input-field"
+              placeholder="Enter your username"
+            />
+          </div>
+        </div>
+
+        <div class="app-title">TaskFlow</div>
+        <div class="input-label">Username</div>
+      </div>
+    </div>
+
+    <!-- Main App (Hidden until login) -->
+    <aside class="app-sidebar" id="appSidebar">
       <nav class="main-navigation">
         <h4>
-          <img src="Main Logo.png" alt="TaskFlow Logo" class="main-logo" />
+          <img src="Main Logo.png" alt="TaskFlow Logo" class="app-logo" />
           <span>TaskFlow</span>
         </h4>
-        <ul class="main-navigation-list">
+        <ul class="navigation-list">
           <li>
-            <img src="Today Logo.png" class="main-navigation-logo" /><a href="#"
-              >Today</a
-            >
+            <img src="Today Logo.png" class="nav-icon" /><a href="#">Today</a>
           </li>
           <li>
-            <img src="Upcoming Logo.png" class="main-navigation-logo" /><a
-              href="#"
+            <img src="Upcoming Logo.png" class="nav-icon" /><a href="#"
               >Upcoming</a
             >
           </li>
           <li>
-            <img src="Completed Logo.png" class="main-navigation-logo" /><a
-              href="#"
+            <img src="Completed Logo.png" class="nav-icon" /><a href="#"
               >Completed</a
             >
           </li>
           <li>
-            <img src="All Task Logo.png" class="main-navigation-logo" /><a
-              href="#"
+            <img src="All Task Logo.png" class="nav-icon" /><a href="#"
               >All Tasks</a
             >
           </li>
@@ -45,49 +78,45 @@
         <div class="nav-divider"></div>
         <section>
           <h6 id="my-lists">MY LISTS</h6>
-          <ul class="main-navigation-list">
+          <ul class="navigation-list">
             <li>
-              <img src="Lists.png" class="main-navigation-logo" /><a href="#"
-                >Personal</a
-              >
+              <img src="Lists.png" class="nav-icon" /><a href="#">Personal</a>
             </li>
             <li>
-              <img src="Lists.png" class="main-navigation-logo" /><a href="#"
-                >Work</a
-              >
+              <img src="Lists.png" class="nav-icon" /><a href="#">Work</a>
             </li>
           </ul>
         </section>
-        <div class="sidebar-settings">
-          <img src="Settigns Logo.png" class="settings-navigation-list" />
+        <div class="settings-container">
+          <img src="Settigns Logo.png" class="settings-icon" />
           <a href="#">Settings</a>
         </div>
       </nav>
     </aside>
 
-    <header class="main-header">
-      <div class="greeting">Hello, Rupika!</div>
-      <div class="main-header-right">
-        <div class="search-bar-container">
+    <header class="app-header" id="appHeader">
+      <div class="user-greeting" id="greetingElement">Hello, User!</div>
+      <div class="header-right">
+        <div class="search-container">
           <img src="Search Logo.png" class="search-icon" />
-          <input type="text" class="search-bar" placeholder="Search" />
+          <input type="text" class="search-field" placeholder="Search" />
           <img src="Voice Logo.png" class="voice-icon" />
         </div>
 
         <div class="user-container">
-          <img src="User Logo.png" class="user-logo" id="userLogo" />
+          <img src="User Logo.png" class="user-avatar" id="userLogo" />
 
-          <div class="popup-overlay" id="userPopup">
-            <div class="popup-content">
-              <button class="close-button" id="closePopup">×</button>
-              <div class="user-logo-container">
+          <div class="user-popup-overlay" id="userPopup">
+            <div class="popup-content-container">
+              <button class="popup-close-button" id="closePopup">×</button>
+              <div class="popup-avatar-container">
                 <img
-                  class="user-avatar"
+                  class="popup-avatar"
                   src="User Logo.png"
                   alt="User Avatar"
                 />
               </div>
-              <h1 class="user-name">Rupika Dangol</h1>
+              <h1 class="popup-username" id="userNameDisplay">User Name</h1>
               <p class="task-status">
                 Tasks Completed: <span class="task-count">2</span>
               </p>
@@ -95,8 +124,48 @@
                 Tasks Pending: <span class="task-count">2</span>
               </p>
               <div class="action-buttons">
-                <button class="action-button logout">Logout</button>
-                <button class="action-button delete">Delete Acc</button>
+                <button class="action-button logout-button" id="logoutButton">
+                  Logout
+                </button>
+                <button
+                  class="action-button delete-button"
+                  id="deleteAccountBtn"
+                >
+                  Delete Acc
+                </button>
+                <!-- Delete Account Confirmation Popup -->
+                <div class="popup-overlay" id="deletePopup">
+                  <div class="popup-content-container">
+                    <button class="popup-close-button" id="deleteCloseBtn">
+                      ×
+                    </button>
+                    <div class="popup-avatar-container">
+                      <img
+                        class="popup-avatar"
+                        src="Delete Logo.png"
+                        alt="Delete Account"
+                      />
+                    </div>
+                    <h1 class="popup-username delete-title">Delete Account</h1>
+                    <p class="task-status delete-message">
+                      Are you sure you want to delete your account?
+                    </p>
+                    <div class="action-buttons">
+                      <button
+                        class="action-button delete-confirm-btn"
+                        id="deleteConfirmBtn"
+                      >
+                        Yes, Delete
+                      </button>
+                      <button
+                        class="action-button delete-cancel-btn"
+                        id="deleteCancelBtn"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -104,17 +173,15 @@
       </div>
     </header>
 
-    <main class="main-content">
-  
-    </main>
+    <main class="app-content" id="appContent"></main>
 
-    <footer class="main-footer">
+    <footer class="app-footer" id="appFooter">
       <div class="footer-left">
-        <img src="New Task Logo.png" class="footer-logo" />
-        <button class="footer-task-btn">New Task</button>
+        <img src="New Task Logo.png" class="task-icon" />
+        <button class="new-task-button">New Task</button>
       </div>
       <div class="footer-right">
-        <button class="add-task-btn">Add Task</button>
+        <button class="add-task-button">Add Task</button>
       </div>
     </footer>
 
