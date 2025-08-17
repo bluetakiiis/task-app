@@ -1,12 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const API_BASE_URL =
-    window.location.hostname === "localhost" ||
-    window.location.hostname === "127.0.0.1"
-      ? "http://localhost:3000"
-      : "https://bluetakiiis.github.io";
-
-  const apiUrl = (endpoint) => `${API_BASE_URL}${endpoint}`;
-
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
@@ -99,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchCategories() {
     try {
-      categories = await getJSON(apiUrl("/api/categories"));
+      categories = await getJSON("/api/categories");
       renderMyLists();
       renderCategorySelect();
     } catch {
@@ -109,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchTasks() {
     try {
-      tasks = await getJSON(apiUrl("/api/tasks"));
+      tasks = await getJSON("/api/tasks");
       renderForActiveSection();
     } catch {
       alert("Error loading tasks");
@@ -292,7 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
       task.status = task.status === "completed" ? "pending" : "completed";
       try {
         const id = task._id || task.id;
-        await getJSON(apiUrl(`/api/tasks/${id}`), {
+        await getJSON(`/api/tasks/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(task),
@@ -397,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#confirmDeleteBtn")?.addEventListener("click", async () => {
       try {
         const id = task._id || task.id;
-        await fetch(apiUrl(`/api/tasks/${id}`), { method: "DELETE" });
+        await fetch(`/api/tasks/${id}`, { method: "DELETE" });
         tasks = tasks.filter((t) => (t._id || t.id) !== id);
         renderForActiveSection();
       } catch {
@@ -483,7 +475,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         const id = task._id || task.id;
-        const saved = await getJSON(apiUrl(`/api/tasks/${id}`), {
+        const saved = await getJSON(`/api/tasks/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updated),
@@ -604,7 +596,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const t = newTaskFromInputs();
     if (!t) return;
     try {
-      const saved = await getJSON(apiUrl("/api/tasks"), {
+      const saved = await getJSON("/api/tasks", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(t),
@@ -708,7 +700,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const username = localStorage.getItem("taskflowUsername");
     if (username) {
       try {
-        await getJSON(apiUrl("/api/deleteAccount"), {
+        await getJSON("/api/deleteAccount", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username }),
@@ -760,7 +752,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = passwordInput.value.trim();
     if (!(username && password))
       return alert("Please enter both username and password");
-    fetch(apiUrl("/api/login"), {
+    fetch("/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
@@ -803,7 +795,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
     try {
-      const newCat = await getJSON(apiUrl("/api/categories"), {
+      const newCat = await getJSON("/api/categories", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name }),
