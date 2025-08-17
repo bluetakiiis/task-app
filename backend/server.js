@@ -15,8 +15,8 @@ app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.use(cors());
 
 // Serve static frontend files (both legacy root and /static to avoid breaking links)
-app.use(express.static(path.join(__dirname, "../frontend")));
-app.use("/static", express.static(path.join(__dirname, "../frontend")));
+app.use(express.static(path.join(__dirname, "../docs")));
+app.use("/static", express.static(path.join(__dirname, "../docs")));
 
 // Show configured DB URL
 console.log(process.env.MONGODB_URL);
@@ -44,7 +44,7 @@ mongoose
 
 // Serve index.html for root path
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/index.html"));
+  res.sendFile(path.join(__dirname, "../docs/index.html"));
 });
 
 // Legacy login route (kept for frontend compatibility)

@@ -57,6 +57,4 @@ Want to run this locally or contribute?
 
 5. Open http://localhost:3000
 
----
-
 **Repository**: [github.com/bluetakiiis/task-app](https://github.com/bluetakiiis/task-app)
